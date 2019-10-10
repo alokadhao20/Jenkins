@@ -1,0 +1,31 @@
+jenkins : used to automate your entire pipeline  
+1. jenkins was previously called hudson and used in sun microsystem
+2. it will 
+    1. pull the code for the repositories 
+    2. build the code 
+    3. run certain shell scripts or automation scripts 
+    4. host it into a staging server 
+3. Jenkins will run on port 8080
+4. lets install jenkins on server_two
+    1. sudo yum install epel-release
+    2. sudo yum update 
+    3. sudo reboot  
+    4. after that login with sudo user
+
+    5. install JAVA its a var file 
+        sudo yum install java-1.8.0-openjdk.x84_64
+    6. setup env. variables 
+        sudo cp /etc/profile /etc/profile_backup
+        echo 'export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk' | sudo tee -a /etc/profile
+        echo 'export JRE_HOME=/usr/lib/jvm/jre' | sudo tee -a /etc/profile
+        source /etc/profile
+
+    7. install jenkins now 
+    wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+    sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+    sudo apt-get update
+    sudo apt-get install jenkins
+
+    8. Start jenkins 
+        systemctl start jenkins
+    9. go to localhost:8080 // jenkins dashboard appears here 
